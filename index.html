@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+    <title>Hello you!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+            font-family: Itim;
+        }
+
+        body {
+            background-color: rgb(228, 177, 240);
+            max-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #b{
+            width: 90vw;
+            height: 90vh;
+
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #container {
+            /* margin: auto; */
+            width: 600px;
+            height: 500px;
+
+            background-color: rgb(126, 96, 191);
+            border: 2px solid rgb(126, 96, 191);
+            border-radius: 50px;
+            box-shadow: 5px 5px 5px black;
+
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #button-box{
+            width: 100%;
+            height: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+        button{
+            padding: 2px;
+
+            width: 200px;
+            height: 50px;
+
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: bolder;
+            color: rgb(67, 56, 120);
+            border: 5px solid rgb(67, 56, 120);
+            border-radius: 50px;
+            box-shadow: 5px 5px 5px black;
+            cursor: pointer;
+        }
+        #yes{
+            margin-left: -250px;
+        }
+        #no{
+            margin-right: -250px;
+        }
+        #yes:hover{
+            background-color: rgb(255, 225, 255);
+        }
+        #gif-box{
+            /* margin-top: 50px; */
+
+            /* width: 200px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #question{
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(255, 225, 255);
+            font-size: 4em;
+        }
+        
+        @media screen and (max-width: 500px){
+            #container{
+                width: 90vw;
+                height: 90vh;
+            }
+            #button-box{
+                height: 100px;
+
+                justify-content: center;
+                align-items: center;
+            }
+            #yes{
+                width: 150px;
+                margin-left: -200px;
+            }
+            #no{
+                width: 150px;
+                margin-right: -200px;
+            }
+            /* body{
+
+                background-color: black;
+            } */
+        }
+        @media screen and (max-width: 400px) {
+            #yes{
+                width: 100px;
+                margin-left: -150px;
+            }
+            #no{
+                width: 100px;
+                margin-right: -150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="b"> -->
+        <div id="container">
+            <div id="gif-box">
+                <img src="resourse/gif-1.gif" alt="gif" id="gif">
+            </div>
+            <!-- <div id="question-box"> -->
+                <h1 id="question">Do you love me?</h1>
+            <!-- </div> -->
+            <div id="button-box">
+                <button id="yes">Yes
+                    <!-- <i class="fa-solid fa-heart"></i> -->
+                </button>
+                <button id="no">No
+                    <!-- <i class="fa-solid fa-heart-crack"></i> -->
+                </button>
+            </div>
+        </div>
+        
+    <!-- </div> -->
+    <script>
+                
+        const container = document.querySelector("#container");
+        const question = document.querySelector("#question");
+        const yes = document.querySelector("#yes");
+        const no = document.querySelector("#no");
+        const gif = document.querySelector("#gif");
+
+        const cont_rect = container.getBoundingClientRect();
+        const no_rect = no.getBoundingClientRect();
+
+        yes.addEventListener('click', () => {
+            gif.setAttribute('src', 'resourse/gif-2.gif')
+            question.innerHTML = "Love you tooooo!";
+        });
+        no.addEventListener('click', () => {
+            gif.setAttribute('src', 'resourse/gif-3.gif')
+            question.innerHTML = "But i love youuuuu!";
+        });
+
+        no.addEventListener("mouseover", () => {
+            // Generate random position within the window bounds
+            const x = Math.floor(Math.random() * (cont_rect.width - no_rect.width) +1  );
+            const y = Math.floor(Math.random() * (cont_rect.height - no_rect.height) +1);
+
+            // Set the new position
+            no.style.left = `${x}px`;
+            no.style.top = `${y}px`;
+        });
+    </script>
+</body>
+
+</html>
